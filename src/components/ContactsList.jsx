@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import { List, Item, BtnDelete } from 'components/ContactsList.styled'
 
 
@@ -14,3 +15,7 @@ export const ContactsList = ({ contacts, removeContact }) => {
     )
   }
 
+ContactsList.propTypes = {
+    contacts: PropTypes.arrayOf(PropTypes.string).isRequired,
+    removeContact: PropTypes.func.isRequired,
+}

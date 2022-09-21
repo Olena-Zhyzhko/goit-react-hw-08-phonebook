@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { ContactsList } from 'components/ContactsList'
 import { ContactForm } from 'components/Form'
 import { Filter } from 'components/Filter'
+import {Container} from 'components/App.styled'
 
 
 export class App extends Component {
@@ -47,21 +48,24 @@ export class App extends Component {
       name.toLocaleLowerCase().includes(normalizedFilter));
     return filtredContacts;
   };
+
+  cleanFilter = () => {
+    this.setState({
+            filter: '',
+        })
+  }
  
   render() {
     const contacts = this.getFilterContacts();
     return (
-      <div style={{
-        padding: 20,
-        // color: '#010101'
-      }}>
+      <Container>
         <h1>Phonebook</h1>
         <ContactForm contacts={this.state.contacts} onSubmit={this.addContact} />
 
         <h2>Contacts</h2>
-          <Filter filter={this.filter} handleChange={this.handleChange} />
+        <Filter filter={this.filter} handleChange={this.handleChange} cleanFilter={this.cleanFilter} />
           <ContactsList contacts={contacts} removeContact={this.removeContact} />
-      </div>
+      </Container>
     );
   };
 }

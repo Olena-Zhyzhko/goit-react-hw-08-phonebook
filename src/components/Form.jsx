@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid'
 import { Form, Lable, Input, BtnForm } from 'components/Form.styled'
 
@@ -22,12 +23,12 @@ export class ContactForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const { name, number } = this.state;
-        this.props.onSubmit({ name, number, id: nanoid() });
-        
+
         if (this.props.contacts.some(contact => contact.name === name)) {
             alert(`${name} is already in contacts`)
         }
 
+        this.props.onSubmit({ name, number, id: nanoid() });
         this.setState({
             name: '',
             number: '',
@@ -63,4 +64,9 @@ export class ContactForm extends Component {
         </Form>
     );
   };
+}
+
+ContactForm.propTypes = {
+    contacts: PropTypes.arrayOf(PropTypes.string).isRequired,
+    onSubmit: PropTypes.func.isRequired,
 }

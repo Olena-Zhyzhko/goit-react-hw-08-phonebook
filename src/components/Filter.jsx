@@ -1,24 +1,28 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid'
 import { Lable, Input } from 'components/Form.styled'
 
+export const Filter = ({ filter, handleChange, cleanFilter}) => {
+  const filterId = nanoid();
 
-
-export class Filter extends Component {
-  filterId = nanoid();
-
-  render() {
     return (
         <div>
-            <Lable htmlFor={this.filterId}>Find contacts by name</Lable>
+            <Lable htmlFor={filterId}>Find contacts by name</Lable>
             <Input
-                id={this.filterId}
+                id={filterId}
                 type="text"
                 name="filter"
-                value={this.props.filter}
-                onChange={this.props.handleChange}
+                value={filter}
+                onChange={handleChange}
+                onBlur={cleanFilter}
             />
         </div>
     )
-  }
+}
+  
+Filter.propTypes = {
+    filter: PropTypes.string.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    cleanFilter: PropTypes.func.isRequired,
 }
