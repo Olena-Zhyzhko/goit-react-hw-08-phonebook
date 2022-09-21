@@ -25,7 +25,8 @@ export class ContactForm extends Component {
         const { name, number } = this.state;
 
         if (this.props.contacts.some(contact => contact.name === name)) {
-            alert(`${name} is already in contacts`)
+            alert(`${name} is already in contacts`);
+            return
         }
 
         this.props.onSubmit({ name, number, id: nanoid() });
