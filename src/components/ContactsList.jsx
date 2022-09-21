@@ -1,15 +1,16 @@
 import React from 'react'
-// import { nanoid } from 'nanoid'
+import { List, Item, BtnDelete } from 'components/ContactsList.styled'
 
 
 export const ContactsList = ({ contacts, removeContact }) => {
     return (
-        <ul>
+        <List>
             {contacts.map(({ id, name, number }) => (
-                <li key={id}>{name}: {number} <button type='button' onClick={() => removeContact(id)}>Delete</button></li>
-            ))
-            }
-        </ul>
+                <Item key={id}>{name}: {number}
+                    <BtnDelete type='button' onClick={() => removeContact(id)}>Delete</BtnDelete>
+                </Item>
+            ))}
+        </List>
     )
   }
 

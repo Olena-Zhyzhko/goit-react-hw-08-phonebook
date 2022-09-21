@@ -53,10 +53,10 @@ export class App extends Component {
     return (
       <div style={{
         padding: 20,
-        color: '#010101'
+        // color: '#010101'
       }}>
         <h1>Phonebook</h1>
-          <ContactForm onSubmit={this.addContact} />
+        <ContactForm contacts={this.state.contacts} onSubmit={this.addContact} />
 
         <h2>Contacts</h2>
           <Filter filter={this.filter} handleChange={this.handleChange} />

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { nanoid } from 'nanoid'
+import { Form, Lable, Input, BtnForm } from 'components/Form.styled'
+
 
 export class ContactForm extends Component {
     state = {
@@ -19,22 +21,24 @@ export class ContactForm extends Component {
     
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e);
         const { name, number } = this.state;
-        this.props.onSubmit({name, number, id: nanoid()})
-        console.log(name);
+        this.props.onSubmit({ name, number, id: nanoid() });
+        
+        if (this.props.contacts.some(contact => contact.name === name)) {
+            alert(`${name} is already in contacts`)
+        }
+
         this.setState({
             name: '',
             number: '',
         })
-        // e.form.input.value = "";
     };
     
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-            <label htmlFor={this.nameId}>Name</label>
-            <input
+      <Form onSubmit={this.handleSubmit}>
+            <Lable htmlFor={this.nameId}>Name</Lable>
+            <Input
               id={this.nameId}
               type="text"
               name="name"
@@ -44,8 +48,8 @@ export class ContactForm extends Component {
                 value={this.state.name}
               onChange={this.handleChange}              
             />
-            <label htmlFor={this.numberId}>Phone number</label>
-            <input
+            <Lable htmlFor={this.numberId}>Phone number</Lable>
+            <Input
                 id={this.numberId}
                 type="tel"
                 name="number"
@@ -55,8 +59,8 @@ export class ContactForm extends Component {
                 value={this.state.number}
                 onChange={this.handleChange}
             />
-            <button type="submit">Add contact</button>
-          </form>
+            <BtnForm type="submit">Add contact</BtnForm>
+        </Form>
     );
   };
 }

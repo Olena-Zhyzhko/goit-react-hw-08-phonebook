@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { nanoid } from 'nanoid'
+import { Lable, Input } from 'components/Form.styled'
+
 
 
 export class Filter extends Component {
@@ -8,8 +10,8 @@ export class Filter extends Component {
   render() {
     return (
         <div>
-            <label htmlFor={this.filterId}>Find contacts by name</label>
-            <input
+            <Lable htmlFor={this.filterId}>Find contacts by name</Lable>
+            <Input
                 id={this.filterId}
                 type="text"
                 name="filter"
