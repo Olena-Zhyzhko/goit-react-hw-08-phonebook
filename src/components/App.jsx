@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { nanoid } from 'nanoid'
-import { Section } from "components/Section";
 import { ContactsList } from 'components/ContactsList'
 import { ContactForm } from 'components/Form'
+import { Filter } from 'components/Filter'
 
 
 export class App extends Component {
@@ -15,8 +14,6 @@ export class App extends Component {
     ],
     filter: ''
   };
-
-  filterId = nanoid();
 
   addContact = (newContact) => {
     this.setState((prevState) => ({
@@ -54,14 +51,7 @@ export class App extends Component {
           <ContactForm onSubmit={this.addContact} />
 
         <h2>Contacts</h2>
-          <label htmlFor={this.filterId}>Find contacts by name</label>
-          <input
-            id={this.filterId}
-            type="text"
-            name="filter"
-            value={this.filter}
-            onChange={this.handleChange}
-          />
+          <Filter filter={this.filter} handleChange={this.handleChange} />
           <ContactsList contacts={contacts} />
       </div>
     );
