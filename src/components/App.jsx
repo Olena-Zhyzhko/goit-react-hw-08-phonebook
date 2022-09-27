@@ -16,6 +16,7 @@ export class App extends Component {
     filter: ''
   };
 
+
   addContact = (newContact) => {
     this.setState((prevState) => ({
       contacts: [...prevState.contacts, newContact],
@@ -55,6 +56,21 @@ export class App extends Component {
         })
   }
  
+  componentDidMount() {
+    const savedContacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(savedContacts);
+    this.setState({
+      contacts: parsedContacts,
+    })
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.contacts.length !== this.state.contacts.length) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
+
   render() {
     const contacts = this.getFilterContacts();
     return (

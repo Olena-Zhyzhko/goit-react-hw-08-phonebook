@@ -29,7 +29,7 @@ export class ContactForm extends Component {
             return
         }
 
-        this.props.onSubmit({ name, number, id: nanoid() });
+        this.props.onSubmit({ id: nanoid(), name, number });
         this.setState({
             name: '',
             number: '',
@@ -68,6 +68,10 @@ export class ContactForm extends Component {
 }
 
 ContactForm.propTypes = {
-    contacts: PropTypes.arrayOf(PropTypes.string).isRequired,
+    contacts: PropTypes.arrayOf(PropTypes.exact({ 
+        id: PropTypes.string.isRequired, 
+        name: PropTypes.string.isRequired, 
+        number: PropTypes.string.isRequired,
+        } )),
     onSubmit: PropTypes.func.isRequired,
 }
