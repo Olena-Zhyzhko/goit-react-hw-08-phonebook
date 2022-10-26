@@ -2,11 +2,15 @@ import { useState } from "react";
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid'
 import { Form, Lable, Input, BtnForm } from 'components/Form.styled'
+import { useSelector, useDispatch } from "react-redux";
+import { addContact } from '../redux/contactsSlice'
 
-
-export function ContactForm({ contacts, onSubmit }) {
+export function ContactForm() {
     const [name, setName] = useState('');
-    const [number, setNumber] = useState('');
+  const [number, setNumber] = useState('');
+  
+  const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts);
 
     const nameId = nanoid();
     const numberId = nanoid();
@@ -36,7 +40,8 @@ export function ContactForm({ contacts, onSubmit }) {
             return
         }
 
-        onSubmit({ id: nanoid(), name, number });
+      dispatch(addContact(name, number))
+        // onSubmit({ id: nanoid(), name, number });
         setName('');
         setNumber('');
     };
@@ -133,11 +138,11 @@ export function ContactForm({ contacts, onSubmit }) {
 //   };
 // }
 
-ContactForm.propTypes = {
-    contacts: PropTypes.arrayOf(PropTypes.exact({ 
-        id: PropTypes.string.isRequired, 
-        name: PropTypes.string.isRequired, 
-        number: PropTypes.string.isRequired,
-        } )),
-    onSubmit: PropTypes.func.isRequired,
-}
+// ContactForm.propTypes = {
+//     contacts: PropTypes.arrayOf(PropTypes.exact({ 
+//         id: PropTypes.string.isRequired, 
+//         name: PropTypes.string.isRequired, 
+//         number: PropTypes.string.isRequired,
+//         } )),
+//     onSubmit: PropTypes.func.isRequired,
+// }
