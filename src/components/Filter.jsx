@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid'
 import { Lable, Input } from 'components/Form.styled'
 import { useSelector, useDispatch } from "react-redux";

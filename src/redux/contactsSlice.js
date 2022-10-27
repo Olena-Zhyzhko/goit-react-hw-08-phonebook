@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
+import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage';
 
 
-const contactsInitialState = [];
+const contactsInitialState = {contacts: [],};
 
 const contactsSlice = createSlice({
   name: "contacts",
@@ -10,7 +12,7 @@ const contactsSlice = createSlice({
   reducers: {
     addContact: {
       reducer(state, action) {
-        state.push(action.payload);
+        state.contacts.push(action.payload);
           },
       prepare(name, number) {
         return {
@@ -23,7 +25,10 @@ const contactsSlice = createSlice({
       },
     },
     removeContact(state, action) {
-      return state.filter(contact => contact.id !== action.payload)
+        const removedContacts = state.contacts.filter(contact => contact.id !== action.payload);
+        return {...state, 
+            contacts: removedContacts,
+        }
     },
   },
 });
@@ -31,3 +36,10 @@ const contactsSlice = createSlice({
 // Експортуємо генератори екшенів та редюсер
 export const { addContact, removeContact } = contactsSlice.actions;
 export const contactReducer = contactsSlice.reducer;
+
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+ 
+export const contactsReducer = persistReducer(persistConfig, contactReducer)

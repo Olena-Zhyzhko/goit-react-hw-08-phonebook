@@ -7,8 +7,8 @@ import { removeContact } from '../redux/contactsSlice'
 
 
 export const ContactsList = ({ contacts }) => {
+    console.log( contacts );
     const dispatch = useDispatch();
-    // const contacts = useSelector(state => state.contacts);
 
     return (
         <List>
@@ -27,5 +27,4 @@ ContactsList.propTypes = {
         name: PropTypes.string.isRequired, 
         number: PropTypes.string.isRequired,
         } )),
-    // removeContact: PropTypes.func.isRequired,
 }
