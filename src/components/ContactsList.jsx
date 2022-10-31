@@ -10,6 +10,9 @@ export const ContactsList = () => {
     const filterName = useSelector(getStatusFilter);
     const contacts = useSelector(getContacts);
   
+    console.log(contacts)
+
+
     const getFilterContacts = () => {
         if (!filterName) {
             return contacts;
@@ -22,7 +25,7 @@ export const ContactsList = () => {
     };
 
     const contactsAfterFilter = getFilterContacts();
-
+console.log(contactsAfterFilter)
 
     return (
         <List>
