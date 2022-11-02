@@ -3,7 +3,8 @@ import { List, Item, BtnDelete } from 'components/ContactsList.styled';
 import { useDispatch, useSelector } from "react-redux";
 import { removeContact } from '../redux/contactsSlice'
 import { getContacts, getStatusFilter } from '../redux/selectors'
-
+import { useEffect } from 'react';
+import * as contactsOpetations from 'redux/contacts/contactsOperations'
 
 export const ContactsList = () => {
     const dispatch = useDispatch();
@@ -11,6 +12,13 @@ export const ContactsList = () => {
     const contacts = useSelector(getContacts);
   
     console.log(contacts)
+
+    useEffect(() => { dispatch(contactsOpetations.fetchContacts()) }, [dispatch]);
+
+//     useEffect(() => {
+//         const contactsAfterFilter = getFilterContacts();
+//  // eslint-disable-next-line react-hooks/exhaustive-deps
+//  }, [contacts]);
 
 
     const getFilterContacts = () => {
@@ -25,13 +33,13 @@ export const ContactsList = () => {
     };
 
     const contactsAfterFilter = getFilterContacts();
-console.log(contactsAfterFilter)
+// console.log(contactsAfterFilter)
 
     return (
         <List>
-            {contactsAfterFilter.map(({ id, name, number }) => (
-                <Item key={id}>{name}: {number}
-                    <BtnDelete type='button' onClick={() => dispatch(removeContact(id))}>Delete</BtnDelete>
+            { contactsAfterFilter.map(({ id, name, phone }) => (
+                <Item key={id}>{name}: {phone}
+                    <BtnDelete type='button' onClick={() => dispatch(contactsOpetations.deleteContact(id))}>Delete</BtnDelete>
                 </Item>
             ))}
         </List>
