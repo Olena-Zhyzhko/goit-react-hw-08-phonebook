@@ -34,9 +34,10 @@ const contactsSlice = createSlice({
     },
     [addContact.fulfilled]: (state, action) => {
       console.log(action.payload);
-      state.items = state.items.push({... action.payload});
+      state.items.push({...action.payload});
       state.isLoading = false;
     },
+    
     [addContact.rejected]: (state, action) => {
       state.error = action.payload;
       state.isLoading = false;
@@ -50,6 +51,7 @@ const contactsSlice = createSlice({
       state.items = state.items.filter((item) => item.id !== action.payload.id);
       state.isLoading = false;
     },
+    
     [deleteContact.rejected]: (state, action) => {
       state.error = action.payload;
       state.isLoading = false;

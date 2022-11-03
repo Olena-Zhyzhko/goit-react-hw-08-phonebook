@@ -1,7 +1,7 @@
 import React from 'react'
 import { List, Item, BtnDelete } from 'components/ContactsList.styled';
 import { useDispatch, useSelector } from "react-redux";
-import { removeContact } from '../redux/contactsSlice'
+// import { removeContact } from '../redux/contactsSlice'
 import { getContacts, getStatusFilter } from '../redux/selectors'
 import { useEffect } from 'react';
 import * as contactsOpetations from 'redux/contacts/contactsOperations'
