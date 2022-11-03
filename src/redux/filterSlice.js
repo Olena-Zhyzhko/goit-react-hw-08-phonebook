@@ -7,10 +7,10 @@ const filterSlice = createSlice({
   initialState: filterInitialState,
   reducers: {
     filter(_, action) {
-        return action.payload
-          },
+      return action.payload
     },
   },
+},
 );
 
 // Експортуємо генератори екшенів та редюсер

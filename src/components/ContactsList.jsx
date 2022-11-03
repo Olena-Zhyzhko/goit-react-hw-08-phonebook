@@ -1,25 +1,19 @@
 import React from 'react'
 import { List, Item, BtnDelete } from 'components/ContactsList.styled';
 import { useDispatch, useSelector } from "react-redux";
-// import { removeContact } from '../redux/contactsSlice'
-import { getContacts, getStatusFilter } from '../redux/selectors'
+import { getContacts, getStatusFilter, getError, getIsLoading } from '../redux/selectors'
 import { useEffect } from 'react';
 import * as contactsOpetations from 'redux/contacts/contactsOperations'
+import Loader from 'components/Loader/Loader'
 
 export const ContactsList = () => {
     const dispatch = useDispatch();
     const filterName = useSelector(getStatusFilter);
     const contacts = useSelector(getContacts);
-  
-    console.log(contacts)
+    const error = useSelector(getError);
+    const loading = useSelector(getIsLoading);
 
     useEffect(() => { dispatch(contactsOpetations.fetchContacts()) }, [dispatch]);
-
-//     useEffect(() => {
-//         const contactsAfterFilter = getFilterContacts();
-//  // eslint-disable-next-line react-hooks/exhaustive-deps
-//  }, [contacts]);
-
 
     const getFilterContacts = () => {
         if (!filterName) {
@@ -33,15 +27,20 @@ export const ContactsList = () => {
     };
 
     const contactsAfterFilter = getFilterContacts();
-// console.log(contactsAfterFilter)
 
     return (
-        <List>
-            { contactsAfterFilter.map(({ id, name, phone }) => (
-                <Item key={id}>{name}: {phone}
-                    <BtnDelete type='button' onClick={() => dispatch(contactsOpetations.deleteContact(id))}>Delete</BtnDelete>
-                </Item>
-            ))}
-        </List>
+        <>
+        {error && <p>{error.massage}</p>}
+        {loading && <Loader>Загружаем</Loader>}
+
+            <List>
+                { contactsAfterFilter.map(({ id, name, phone }) => (
+                    <Item key={id}>{name}: {phone}
+                        <BtnDelete type='button' onClick={() => dispatch(contactsOpetations.deleteContact(id))}>Delete</BtnDelete>
+                    </Item>
+                ))}
+            </List>
+
+        </>
     )
   }
