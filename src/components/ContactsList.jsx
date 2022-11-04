@@ -30,7 +30,7 @@ export const ContactsList = () => {
 
     return (
         <>
-        {error && <p>{error.massage}</p>}
+        {error && <p>{error.message}</p>}
         {loading && <Loader>Загружаем</Loader>}
 
             <List>
