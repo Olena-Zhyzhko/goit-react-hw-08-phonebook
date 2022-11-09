@@ -34,8 +34,8 @@ export const ContactsList = () => {
         {loading && <Loader>Загружаем</Loader>}
 
             <List>
-                { contactsAfterFilter.map(({ id, name, phone }) => (
-                    <Item key={id}>{name}: {phone}
+                { contactsAfterFilter.map(({ id, name, number }) => (
+                    <Item key={id}>{name}: {number}
                         <BtnDelete type='button' onClick={() => dispatch(contactsOpetations.deleteContact(id))}>Delete</BtnDelete>
                     </Item>
                 ))}

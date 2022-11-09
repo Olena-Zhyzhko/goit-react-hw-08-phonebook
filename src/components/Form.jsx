@@ -40,7 +40,7 @@ export function ContactForm() {
             return
         }
 
-      dispatch(contactsOpetations.addContact({ name, phone: number }))
+      dispatch(contactsOpetations.addContact({ name, number }))
         setName('');
         setNumber('');
     };
