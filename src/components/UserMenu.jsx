@@ -11,7 +11,7 @@ export default function UserMenu() {
 
   return (
       <div>
-          <p>{userName.name}</p>
+          <p>{userName.email}</p>
           <button type='button' onClick={() => dispatch(authOpetations.logOut())}>Logout</button>
       </div>
   )
