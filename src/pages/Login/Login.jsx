@@ -5,7 +5,7 @@ import * as authOpetations from 'redux/auth/authOperations'
 import { Form, Lable, Input, BtnForm } from 'components/Form.styled'
 
 
-export function Login() {
+export  default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   

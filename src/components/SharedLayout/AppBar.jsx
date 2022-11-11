@@ -1,6 +1,4 @@
-import React
-// { Suspense }
-  from 'react'
+import React, { Suspense } from 'react'
 import { Outlet } from "react-router-dom";
 import './AppBar.css'
 import Navigation from "./Navigation";
@@ -18,9 +16,9 @@ export default function AppBar() {
         {/* </AuthNav > */}
         {/* <UserMenu /> */}
       {/* </header> */}
-      {/* <Suspense fallback={null}> */}
+      <Suspense fallback={null}>
           <Outlet />
-      {/* </Suspense> */}
+      </Suspense>
     </>
   )
 }

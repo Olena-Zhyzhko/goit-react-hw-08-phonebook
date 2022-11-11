@@ -6,7 +6,7 @@ import * as authOpetations from 'redux/auth/authOperations'
 import { Form, Lable, Input, BtnForm } from 'components/Form.styled'
 
 
-export function Register() {
+export default function Register() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
