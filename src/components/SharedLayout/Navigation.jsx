@@ -4,7 +4,7 @@ import UserMenu from 'components/UserMenu'
 import { useSelector } from "react-redux";
 import { getIsLoggedIn } from 'redux/auth/authSelectors';
 import AuthNav from 'components/SharedLayout/AuthNav'
-import { Box, Heading, Text, Flex } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 
 export default function Navigation() {

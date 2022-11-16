@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import * as authSelectors from 'redux/auth/authSelectors'
 import * as authOpetations from 'redux/auth/authOperations'
-import { Box, Text, Flex } from "@chakra-ui/react"
+import { Text, Flex } from "@chakra-ui/react"
 
 
 export default function UserMenu() {
