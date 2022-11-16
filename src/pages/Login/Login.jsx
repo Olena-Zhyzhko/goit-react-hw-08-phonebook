@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid'
 import { useDispatch } from "react-redux";
 import * as authOpetations from 'redux/auth/authOperations'
 import { Form, Lable, Input, BtnForm } from 'components/Form.styled'
-
+// import { Input } from '@chakra-ui/react'
 
 export  default function Login() {
     const [email, setEmail] = useState('');

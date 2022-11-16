@@ -7,9 +7,9 @@
 }
 
 .NavLink {
-  margin-right: 10px;
+  margin-left: 20px;
   text-decoration: none;
-  color: rgb(111, 204, 247);
+  color: #6fccf7;
   font-weight: 400;
 }
 
@@ -20,3 +20,14 @@
  .NavLink:hover,
  .NavLink:focus {
   font-weight: 700; }
+
+  .Link {
+    text-decoration: none;
+    color: blue;
+    font-weight: 500;
+  }
+
+  .Link:hover,
+  .Link:focus {
+    font-weight: 700;
+  }

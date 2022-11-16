@@ -11,6 +11,7 @@ import * as authOpetations from 'redux/auth/authOperations'
 import PublicRoute from 'components/SharedLayout/PublicRoute'
 import PrivateRoute from 'components/SharedLayout/PrivateRoute'
 import { getFetchingCurrentUser } from 'redux/auth/authSelectors'
+import HomePage from 'pages/HomePage/HomePage'
 
 const Login = lazy(() => import("pages/Login/Login"));
 const Register = lazy(() => import("pages/Register/Register"));
@@ -27,15 +28,16 @@ export function App() {
     !isFetchingCurrentUser && (
     < div >
     <Routes>
-      <Route path="/" element={<SharedLayout />}>
-        <Route element={<PublicRoute />} >
-          <Route path="/login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-        </Route>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<HomePage />} />
+          <Route element={<PublicRoute />} >
+            <Route index path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+          </Route>
 
-        <Route element={<PrivateRoute />} >
-          <Route path="/contacts" element={<Contacts />} />
-        </Route>
+          <Route element={<PrivateRoute />} >
+            <Route path="contacts" element={<Contacts />} />
+          </Route>
       </Route>
     </Routes>
     </div >
