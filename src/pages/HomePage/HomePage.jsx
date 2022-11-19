@@ -1,7 +1,6 @@
 import React from 'react'
-// import { Link } from "react-router-dom";
-import { Box, Heading, Text, Flex, Link } from "@chakra-ui/react"
-import { Link as ReachLink } from "@reach/router";
+import { Link } from "react-router-dom";
+import { Box, Heading, Text, Flex } from "@chakra-ui/react"
 
 export default function HomePage() {
   return (
@@ -14,12 +13,11 @@ export default function HomePage() {
           </Text>
           <Flex align="center" justify="center" mt='10px'>
             <Box borderRadius='4px' bg='#6fccf7' mr='10px' px='15px' py='10px'>
-                <Link className="Link"  as={ReachLink} to="login">Login</Link >
+                <Link className="Link"  to='/login'>Login</Link>
             </Box>
             <Box borderRadius='4px' bg='#6fccf7' px='15px' py='10px'>
                 <Link className="Link" to="/register">Register</Link >
             </Box>
-
         </Flex>
       </Box>
   )

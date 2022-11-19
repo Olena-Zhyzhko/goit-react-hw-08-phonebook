@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid'
 import { useDispatch } from "react-redux";
 import * as authOpetations from 'redux/auth/authOperations'
 import { Form, Lable, Input, BtnForm } from 'components/Form.styled'
+import { Box } from '@chakra-ui/react';
 
 
 export default function Register() {
@@ -12,7 +13,6 @@ export default function Register() {
     const [password, setPassword] = useState('');
   
     const dispatch = useDispatch();
-    // const contacts = useSelector(getContacts);
 
     const nameId = nanoid();
     const emailId = nanoid();
@@ -48,6 +48,7 @@ export default function Register() {
     };
 
   return (
+    <Box mx="auto">
         <Form onSubmit={handleSubmit}>
             <Lable htmlFor={nameId}>Name</Lable>
             <Input
@@ -66,8 +67,6 @@ export default function Register() {
               id={emailId}
               type="text"
               name="email"
-            //   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            //   title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                 required
                 value={email}
               onChange={handleChange}              
@@ -78,13 +77,13 @@ export default function Register() {
               id={passwordId}
               type="text"
               name="password"
-            //   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            //   title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                 required
                 value={password}
               onChange={handleChange}              
             />
             <BtnForm type="submit">Register</BtnForm>
           </Form>
+
+    </Box>
           )
 }

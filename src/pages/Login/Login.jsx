@@ -3,7 +3,6 @@ import { nanoid } from 'nanoid'
 import { useDispatch } from "react-redux";
 import * as authOpetations from 'redux/auth/authOperations'
 import { Form, Lable, Input, BtnForm } from 'components/Form.styled'
-// import { Input } from '@chakra-ui/react'
 
 export  default function Login() {
     const [email, setEmail] = useState('');
@@ -45,8 +44,6 @@ export  default function Login() {
               id={emailId}
               type="text"
               name="email"
-            //   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            //   title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                 required
                 value={email}
               onChange={handleChange}              
@@ -57,8 +54,6 @@ export  default function Login() {
               id={passwordId}
               type="text"
               name="password"
-            //   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            //   title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                 required
                 value={password}
               onChange={handleChange}              
