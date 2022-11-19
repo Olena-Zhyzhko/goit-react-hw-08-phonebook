@@ -33,11 +33,3 @@ export {
     persistor
 };
 
-// const store = configureStore({
-//     reducer: {
-//         contacts: contactReducer,
-//         filter: filterReducer,
-//     },
-// });
-    
-// export { store };
