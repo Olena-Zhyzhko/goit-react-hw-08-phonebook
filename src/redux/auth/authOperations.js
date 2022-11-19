@@ -34,6 +34,7 @@ export const logIn = createAsyncThunk(
             token.set(data.token);
             return data;
         } catch (error) {
+            console.log(rejectWithValue(error));
             return rejectWithValue(error);
         }
     }
@@ -57,7 +58,6 @@ export const authCurrentUser = createAsyncThunk(
     async (_, thunkAPI) => {
         const state = thunkAPI.getState();
         const persistorToken = state.auth.token;
-        console.log(persistorToken);
 
         if (persistorToken === null) {
             return thunkAPI.rejectWithValue();

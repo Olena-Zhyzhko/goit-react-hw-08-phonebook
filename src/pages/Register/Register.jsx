@@ -3,14 +3,16 @@ import { useState } from "react";
 import { nanoid } from 'nanoid'
 import { useDispatch } from "react-redux";
 import * as authOpetations from 'redux/auth/authOperations'
-import { Form, Lable, Input, BtnForm } from 'components/Form.styled'
-import { Box } from '@chakra-ui/react';
+import { Form, Lable, Input, BtnForm, BtnShow } from 'components/Form.styled'
+import { Box, InputGroup, InputRightElement } from '@chakra-ui/react';
 
 
 export default function Register() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const [password, setPassword] = useState('');
+    const [show, setShow] = useState(false)
+
   
     const dispatch = useDispatch();
 
@@ -48,7 +50,7 @@ export default function Register() {
     };
 
   return (
-    <Box mx="auto">
+    <Box     py='20px' pl='20px' mx="auto">
         <Form onSubmit={handleSubmit}>
             <Lable htmlFor={nameId}>Name</Lable>
             <Input
@@ -73,14 +75,21 @@ export default function Register() {
             />
               
             <Lable htmlFor={passwordId}>Password</Lable>
+        <InputGroup >
             <Input
               id={passwordId}
-              type="text"
+              type={show ? 'text' : 'password'}
               name="password"
                 required
                 value={password}
               onChange={handleChange}              
-            />
+          />
+            <InputRightElement display='flexbox;' justify-content='flex-start' width='100%' top='3px' left='145' font-size='8px'>
+                <BtnShow  onClick={() => setShow(!show)}>
+                  {show ? 'Hide' : 'Show'}
+                </BtnShow>
+                  </InputRightElement>
+              </InputGroup>
             <BtnForm type="submit">Register</BtnForm>
           </Form>
 

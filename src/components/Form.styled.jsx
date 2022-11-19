@@ -23,3 +23,10 @@ export const BtnForm = styled.button`
     font-size: 12px;
     cursor: pointer;
 `;
+export const BtnShow = styled.button`
+    padding: 2px 3px;
+    border-radius: 3px;
+    border: 1px solid grey;
+    font-size: 8px;
+    cursor: pointer;
+`;
