@@ -69,7 +69,7 @@ export  default function Login() {
               onChange={handleChange}              
           />
             <InputRightElement display='flexbox;' justify-content='flex-start' width='100%' top='3px' left='145' font-size='8px'>
-                <BtnShow  onClick={() => setShow(!show)}>
+                <BtnShow type="button" onClick={() => setShow(!show)}>
                   {show ? 'Hide' : 'Show'}
                 </BtnShow>
                   </InputRightElement>
